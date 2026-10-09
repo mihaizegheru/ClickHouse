@@ -1170,7 +1170,8 @@ std::pair<Poco::JSON::Object::Ptr, String> createEmptyMetadataFile(
             throw Exception(
                 ErrorCodes::BAD_ARGUMENTS,
                 "Invalid iceberg sort order: expected {} elements, but got {}",
-                sort_columns.size(), transform_and_column_pairs.size());
+                sort_columns.size(),
+                transform_and_column_pairs.size());
 
         Poco::JSON::Array::Ptr sorting_fields = new Poco::JSON::Array;
         for (size_t i = 0; i < transform_and_column_pairs.size(); ++i)
@@ -1192,7 +1193,7 @@ std::pair<Poco::JSON::Object::Ptr, String> createEmptyMetadataFile(
     {
         sort_order->set(Iceberg::f_fields, Poco::JSON::Array::Ptr(new Poco::JSON::Array));
     }
-    
+
     new_metadata_file_content->set(Iceberg::f_default_sort_order_id, sort_order_id);
     sort_order->set(Iceberg::f_order_id, sort_order_id);
 

@@ -1594,7 +1594,8 @@ ORDER BY tuple()
         settings={"write_full_path_in_iceberg_metadata": 1},
     )
     registered = catalog.register_table(
-        f"{root_namespace}.{plain_table}", f"s3://warehouse-rest/{plain_table}/metadata/v1.metadata.json"
+        f"{root_namespace}.{plain_table}", 
+        f"s3://warehouse-rest/{plain_table}/metadata/v1.metadata.json"
     )
     assert registered.sort_order().is_unsorted
     node.query(f"DROP TABLE `{plain_table}`")
